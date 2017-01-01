@@ -1,0 +1,21 @@
+{
+    "name": "yiimaker/yii2-configuration",
+    "description": "Configuration",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension"],
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Ruslan Saiko",
+            "email": "ruslan.saiko.dev@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "\\ymaker\\configuration\\": ""
+        }
+    }
+}
