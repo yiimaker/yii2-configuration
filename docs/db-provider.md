@@ -1,14 +1,20 @@
 DB Provider
 ===========
-Db provider for configuration component
+Db provider for `Configuration` component
 
 Configuration
 -------------
+Migrate
+```php
+./yii migrate --migrationPath="@ymaker/configuration/migrations"
+```
+and configure provider
 ```php
 'provider' => [
     'class' => '\ymaker\configuration\providers\DbProvider',
     'tableName' => '{{%config}}'
 ]
+
 ```
 Field Description
 -----------------
