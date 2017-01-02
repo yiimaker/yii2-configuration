@@ -14,11 +14,11 @@ Field Description
 -----------------
 
 |Field         |Type                              |Default             |Description        |
-|:------------:|:--------------------------------:|:------------------:|------------------:|
+|:------------:|:--------------------------------:|:------------------:|:------------------|
 |`$tableName`  |`string`                          |`{{%configuration}}`|table name         |
 |`$keyColumn`  |`string`                          |`key`               |key column name    |
 |`$valueColumn`|`string`                          |`value`             |value column name  |
-|`$db`         |`string\|array\|yii\db\Connection`|`db`                |database connection|
+|`$db`         |`string|array|yii\db\Connection`  |`db`                |database connection|
 
 Usage
 -----
