@@ -18,10 +18,17 @@ interface ProviderInterface
     function get($key);
 
     /**
-     * set
+     * set value to configuration
      * @param $key string
      * @param $value string
      * @return bool
      */
     function set($key, $value);
+
+    /**
+     *  return true if this key exist
+     * @param $key string
+     * @return boolean
+     */
+    function exists($key);
 }

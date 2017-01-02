@@ -53,6 +53,12 @@ class DbProvider extends Component implements ProviderInterface
         }
     }
 
+    /**
+     *
+     * @param $key
+     * @param array $columns
+     * @return array|bool
+     */
     private function findOneByKey($key, $columns = [])
     {
         return (new Query())
@@ -63,5 +69,16 @@ class DbProvider extends Component implements ProviderInterface
             ])
             ->limit(1)
             ->one($this->db);
+    }
+
+    /**
+     *  return tru if this key exist
+     * @param $key string
+     * @return boolean
+     */
+    function exists($key)
+    {
+        $configRaw = $this->findOneByKey($key, $this->keyColumn);
+        return !empty($configRaw);
     }
 }

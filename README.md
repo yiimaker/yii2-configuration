@@ -35,9 +35,9 @@ In configuration file
         'class' => '\ymaker\configuration\Configuration',
         'provider' => [
             'class' => '\ymaker\configuration\providers\DbProvider',
-            'tableName' => '{{%configuration}}',  //by default
-            'keyColumn' => 'key',                 //by default
-            'valueColumn' => 'value',             //by default
+            'tableName' => '{{%configuration}}',  // by default
+            'keyColumn' => 'key',                 // by default
+            'valueColumn' => 'value',             // by default
         ]
     ],
     ...
@@ -55,5 +55,6 @@ Usage
 Db provider example
 ```php
 $isSet = \Yii::$app->config->set('commission', '10');   // return false if something went wrong
+$isSet = \Yii::$app->config->exists('commission');      // return true if key exists
 $value = \Yii::$app->config->get('commission');         // return '10';
 ```
