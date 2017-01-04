@@ -21,6 +21,7 @@ class DbProvider extends Component implements ProviderInterface
     public $keyColumn = "key";
     public $valueColumn = "value";
 
+
     public function init()
     {
         parent::init();
@@ -28,29 +29,49 @@ class DbProvider extends Component implements ProviderInterface
     }
 
     /** @inheritdoc */
-    function get($key)
+    public function get($key)
     {
         $result = $this->findOneByKey($key, $this->valueColumn);
         return $result[$this->valueColumn];
     }
 
     /** @inheritdoc */
-    function set($key, $value)
+    public function set($key, $value)
     {
         try {
-            $rawNumber = (new Query())
-                ->createCommand($this->db)
-                ->insert($this->tableName, [
+            $rawNumber = null;
+            $query = new Query();
+            $command = $query->createCommand($this->db);
+            if ($this->exists($key)) {
+                $command = $command->update($this->tableName, [
                     $this->keyColumn => $key,
                     $this->valueColumn => $value,
-                ])
-                ->execute();
+                ],
+                    [$this->keyColumn => $key]
+                );
+            } else {
+                $command = $command->insert($this->tableName, [
+                    $this->keyColumn => $key,
+                    $this->valueColumn => $value,
+                ]);
+            }
+            $rawNumber = $command->execute();
             return isset($rawNumber);
 
         } catch (Exception $e) {
             \Yii::error($e->getTraceAsString());
             return false;
         }
+    }
+
+    /** @inheritdoc */
+    public function exists($key)
+    {
+        return (new Query())
+            ->select($this->keyColumn)
+            ->from($this->tableName)
+            ->where([$this->keyColumn => $key])
+            ->exists($this->db);
     }
 
     /**
@@ -71,14 +92,4 @@ class DbProvider extends Component implements ProviderInterface
             ->one($this->db);
     }
 
-    /**
-     *  return tru if this key exist
-     * @param $key string
-     * @return boolean
-     */
-    function exists($key)
-    {
-        $configRaw = $this->findOneByKey($key, $this->keyColumn);
-        return !empty($configRaw);
-    }
 }

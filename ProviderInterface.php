@@ -15,7 +15,7 @@ interface ProviderInterface
      * @param $key string
      * @return string|null
      */
-    function get($key);
+    public function get($key);
 
     /**
      * set value to configuration
@@ -23,12 +23,12 @@ interface ProviderInterface
      * @param $value string
      * @return bool
      */
-    function set($key, $value);
+    public function set($key, $value);
 
     /**
      *  return true if this key exist
      * @param $key string
      * @return boolean
      */
-    function exists($key);
+    public function exists($key);
 }
