@@ -38,26 +38,31 @@ class DbProvider extends Component implements ProviderInterface
     /** @inheritdoc */
     public function set($key, $value)
     {
-        try {
-            $rawNumber = null;
-            $query = new Query();
-            $command = $query->createCommand($this->db);
-            if ($this->exists($key)) {
-                $command = $command->update($this->tableName, [
-                    $this->keyColumn => $key,
-                    $this->valueColumn => $value,
-                ],
-                    [$this->keyColumn => $key]
-                );
-            } else {
-                $command = $command->insert($this->tableName, [
-                    $this->keyColumn => $key,
-                    $this->valueColumn => $value,
-                ]);
-            }
-            $rawNumber = $command->execute();
-            return isset($rawNumber);
+        $rawNumber = null;
+        $query = new Query();
+        $command = $query->createCommand($this->db);
+        if ($this->exists($key)) {
+            $command = $command->update($this->tableName, [
+                $this->keyColumn => $key,
+                $this->valueColumn => $value,
+            ],
+                [$this->keyColumn => $key]
+            );
+        } else {
+            $command = $command->insert($this->tableName, [
+                $this->keyColumn => $key,
+                $this->valueColumn => $value,
+            ]);
+        }
+        $rawNumber = $command->execute();
+        return isset($rawNumber);
+    }
 
+    /** @inheritdoc */
+    public function safeSet($key, $value)
+    {
+        try {
+            $this->set($key, $value);
         } catch (Exception $e) {
             \Yii::error($e->getTraceAsString());
             return false;

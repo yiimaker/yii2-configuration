@@ -54,7 +54,9 @@ Usage
 
 Db provider example
 ```php
-$isSet = \Yii::$app->config->set('commission', '10');   // return false if something went wrong
+$isSet = \Yii::$app->config->set('commission', '10');   // can throw an exception
+$isSet = \Yii::$app->config->safeSet('commission', '10');   // return false if something went wrong
+
 $isSet = \Yii::$app->config->exists('commission');      // return true if key exists
 $value = \Yii::$app->config->get('commission');         // return '10';
 ```

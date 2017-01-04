@@ -41,6 +41,12 @@ class Configuration extends Component implements ProviderInterface
 
 
     /** @inheritdoc */
+    public function safeSet($key, $value)
+    {
+        return $this->provider->safeSet($key, $value);
+    }
+
+    /** @inheritdoc */
     function exists($key)
     {
         return $this->provider->exists($key);
