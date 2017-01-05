@@ -4,6 +4,10 @@
     "type": "yii2-extension",
     "keywords": ["yii2","extension"],
     "license": "Apache-2.0",
+    "support": {
+        "issues": "https://github.com/yiimaker/yii2-configuration/issues?state=open",
+        "source": "https://github.com/yiimaker/yii2-configuration"
+    },
     "authors": [
         {
             "name": "Ruslan Saiko",
