@@ -47,6 +47,7 @@ class DbProvider extends \ymaker\configuration\providers\DbProvider implements T
     public function getTranslation($key, $language)
     {
         $defaultLanguage = $language ?: \Yii::$app->sourceLanguage;
+
         $query = (new Query())
             ->select($this->valueColumn)
             ->from($this->tableName)
@@ -56,7 +57,7 @@ class DbProvider extends \ymaker\configuration\providers\DbProvider implements T
                     $this->languageColumn => $defaultLanguage,
                 ]);
         $value = $query->one($this->db);
-        die(var_dump($value));
+        return $value ? $value[$this->valueColumn] : null;
     }
 
     /**
