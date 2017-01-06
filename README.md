@@ -25,9 +25,3 @@ Content
 -------
 1. [Configuration](docs/)
 2. [Configuration Translation](docs/translation/)
-
-Create own provider
---------------------
-1. Create Class for provider
-2. Implement `\ymaker\configuration\ProviderInterface`
-3. Change in the configuration file on your provider
