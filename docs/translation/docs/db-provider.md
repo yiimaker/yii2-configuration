@@ -32,6 +32,6 @@ Usage
 ```php
 $isSet = \Yii::$app->config->set('address', 'Kiev, Ukraine');
 $value = \Yii::$app->config->get('address'); // return 'Kiev, Ukraine';
-$isSetTranslation = \Yii::$app->config->set('address', 'Киев, Украина' 'ru-RU');
+$isSetTranslation = \Yii::$app->config->setTranslation('address', 'Киев, Украина' 'ru-RU');
 $valueTranslation = \Yii::$app->config->getTranslation('address', 'ru-RU'); // return 'Киев, Украина';
 ```
