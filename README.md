@@ -23,8 +23,8 @@ to the require section of your `composer.json` file.
 
 Content
 -------
-1. [Configuration](docs/README.MD)
-2. [Configuration Translation](docs/translation/README.MD)
+1. [Configuration](docs/)
+2. [Configuration Translation](docs/translation/)
 
 Create own provider
 --------------------

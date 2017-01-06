@@ -4,7 +4,7 @@ Configuration component is designed for key-value type data storage.
 
 Providers
 ---------
-[DB Provider](docs/db-provider.md)
+[DB Provider](db-provider.md)
 
 Configuration
 -------------
