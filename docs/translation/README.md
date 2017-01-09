@@ -15,7 +15,7 @@ In configuration file
     'config' => [
         'class' => '\ymaker\configuration\translation\Configuration',
         'provider' => [
-    'class' => '\ymaker\configuration\providers\translation\DbProvider',
+        'class' => '\ymaker\configuration\providers\translation\DbProvider',
             'tableName' => '{{%configuration}}',  // by default
             'keyColumn' => 'key',                 // by default
             'valueColumn' => 'value',             // by default
