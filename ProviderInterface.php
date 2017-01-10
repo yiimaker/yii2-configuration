@@ -18,6 +18,13 @@ interface ProviderInterface
     public function get($key);
 
     /**
+     * @param $keys array
+     * @return string[]
+     */
+    public function getMultiply($keys);
+
+
+    /**
      * set value to configuration
      * @param $key string
      * @param $value string

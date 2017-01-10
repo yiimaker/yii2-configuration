@@ -97,4 +97,19 @@ class DbProvider extends Component implements ProviderInterface
             ->one($this->db);
     }
 
+    /**
+     * @param $keys array
+     * @return string[]
+     */
+    public function getMultiply($keys)
+    {
+        $valuesQuery = (new Query())
+            ->select([$this->keyColumn, $this->valueColumn])
+            ->from($this->tableName)
+            ->where([
+                $this->keyColumn => $keys
+            ]);
+        $values = ArrayHelper::map($valuesQuery->all($this->db), $this->keyColumn, $this->valueColumn);
+        return $values;
+    }
 }

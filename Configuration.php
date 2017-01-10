@@ -51,4 +51,10 @@ class Configuration extends Component implements ProviderInterface
     {
         return $this->provider->exists($key);
     }
+
+    /** @inheritdoc */
+    public function getMultiply($keys)
+    {
+        return $this->provider->getMultiply($keys);
+    }
 }

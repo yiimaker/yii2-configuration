@@ -3,6 +3,7 @@
 namespace ymaker\configuration\translation\providers;
 
 use yii\db\Query;
+use yii\helpers\ArrayHelper;
 use ymaker\configuration\translation\TranslationProviderInterface;
 
 /**
@@ -111,5 +112,33 @@ class DbProvider extends \ymaker\configuration\providers\DbProvider implements T
     {
         $language =  \Yii::$app->language;
         return $this->translationExists($key, $language);
+    }
+
+    /**
+     * @param $keys array
+     * @return string[]
+     */
+    public function getMultiply($keys)
+    {
+        $language = \Yii::$app->language;
+        return $this->getMultiplyTranslation($keys, $language);
+    }
+
+    /**
+     * @param $keys string[]
+     * @param $language string
+     * @return string[] retrun values
+     */
+    public function getMultiplyTranslation($keys, $language)
+    {
+        $valuesQuery = (new Query())
+            ->select([$this->keyColumn, $this->valueColumn])
+            ->from($this->tableName)
+            ->where([
+                $this->keyColumn => $keys,
+                $this->languageColumn => $language
+            ]);
+        $values = ArrayHelper::map($valuesQuery->all($this->db), $this->keyColumn, $this->valueColumn);
+        return $values;
     }
 }

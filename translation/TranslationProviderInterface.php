@@ -12,12 +12,18 @@ use ymaker\configuration\ProviderInterface;
 interface TranslationProviderInterface extends ProviderInterface
 {
     /**
-     * @param string $key
-     * @param string $language
+     * @param $key string
+     * @param $language string
      * @return string|null
      */
     public function getTranslation($key, $language);
 
+    /**
+     * @param $keys string[]
+     * @param $language string
+     * @return string[] retrun values
+     */
+    public function getMultiplyTranslation($keys, $language);
     /**
      * @param string $key
      * @param string $value

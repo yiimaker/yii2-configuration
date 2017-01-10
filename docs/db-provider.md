@@ -31,4 +31,8 @@ Usage
 ```php
 $isSet = \Yii::$app->config->set('commission', '10');
 $value = \Yii::$app->config->get('commission'); // return '10';
+$isSet = \Yii::$app->config->set('address', 'Kiev, Ukraine');
+
+$valus = \Yii::$app->config->getMultiply(['commission', 'address']); // return ['commision' => '10', 'address' => 'Kiev, Ukraine'];
+
 ```

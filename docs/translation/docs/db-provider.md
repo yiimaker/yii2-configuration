@@ -34,4 +34,8 @@ $isSet = \Yii::$app->config->set('address', 'Kiev, Ukraine');
 $value = \Yii::$app->config->get('address'); // return 'Kiev, Ukraine';
 $isSetTranslation = \Yii::$app->config->setTranslation('address', 'Киев, Украина' 'ru-RU');
 $valueTranslation = \Yii::$app->config->getTranslation('address', 'ru-RU'); // return 'Киев, Украина';
+
+$isSetTranslation = \Yii::$app->config->setTranslation('phone', '+111111111111' 'ru-RU');
+$keys = ['address', 'phone'];
+$valueTranslations = \Yii::$app->config->getMultiplyTranslation($keys, 'ru-RU'); // return ['address' => 'Киев, Украина', 'phone' => '+111111111111'];
 ```

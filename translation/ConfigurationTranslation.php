@@ -46,4 +46,14 @@ class ConfigurationTranslation extends Configuration implements TranslationProvi
     {
         return $this->provider->translationExists($key, $language);
     }
+
+    /**
+     * @param $keys array
+     * @param $language string
+     * @return string[]
+     */
+    public function getMultiplyTranslation($keys, $language)
+    {
+        return $this->provider->getMultiplyTranslation($keys, $language);
+    }
 }
