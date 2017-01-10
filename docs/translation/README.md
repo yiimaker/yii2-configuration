@@ -16,9 +16,9 @@ In configuration file
         'class' => '\ymaker\configuration\translation\Configuration',
         'provider' => [
         'class' => '\ymaker\configuration\providers\translation\DbProvider',
-            'tableName' => '{{%configuration}}',  // by default
-            'keyColumn' => 'key',                 // by default
-            'valueColumn' => 'value',             // by default
+            'tableName' => '{{%configuration_translation}}',  // by default
+            'keyColumn' => 'key',                             // by default
+            'valueColumn' => 'value',                         // by default
         ]
     ],
     ...
@@ -35,9 +35,12 @@ Usage
 
 Db provider example
 ```php
-$isSet = \Yii::$app->config->set('commission', '10');       // can throw an exception
-$isSet = \Yii::$app->config->safeSet('commission', '10');   // return false if something went wrong
+$isSet = \Yii::$app->config->set('address', 'Kiev, Ukraine');
+$value = \Yii::$app->config->get('address'); // return 'Kiev, Ukraine';
+$isSetTranslation = \Yii::$app->config->setTranslation('address', 'Киев, Украина' 'ru-RU');
+$valueTranslation = \Yii::$app->config->getTranslation('address', 'ru-RU'); // return 'Киев, Украина';
 
-$isSet = \Yii::$app->config->exists('commission');          // return true if key exists
-$value = \Yii::$app->config->get('commission');             // return '10';
+$isSetTranslation = \Yii::$app->config->setTranslation('phone', '+111111111111' 'ru-RU');
+$keys = ['address', 'phone'];
+$valueTranslations = \Yii::$app->config->getMultiplyTranslation($keys, 'ru-RU'); // return ['address' => 'Киев, Украина', 'phone' => '+111111111111'];
 ``` 
